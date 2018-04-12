@@ -5,10 +5,10 @@ import BDD.PDO;
 public class Emprunt {
 	// identifiant unique de l'emprunt
 	private int id_emprunt;
-	// le livre crée
-	private Livre livre;
-	// l'usager crée
-	private Usager usager;
+	// identifiant unique du livre crée
+	private int id_livre;
+	// identifiant unique de l'usager
+	private int id_usager;
 	// la date d'emprunt du livre
 	private String date_emprunt;
 	// la date de retour du livre
@@ -37,54 +37,54 @@ public class Emprunt {
 	}
 
 	/**
-	 * Retourne le livre à emprunter ou à rendre
+	 * Retourne l'identifiant du livre à emprunter ou à rendre
 	 *
-	 * @return livre
+	 * @return id_livre
 	 **/
-	public Livre getLivre() {
-		return livre;
+	public int getId_livre() {
+		return id_livre;
 	}
 
 	/**
-	 * Méthode permettant de modifier le livre
+	 * Méthode permettant de modifier l'identifiant du livre
 	 *
-	 * @param livre
-	 *            contenant le nouveau livre à modifier
+	 * @param id_livre
+	 *            contenant le nouvel identifiant du livre à modifier
 	 **/
-	public void setLivre(Livre livre) {
-		this.livre = livre;
+	public void setId_livre(int id_livre) {
+		this.id_livre = id_livre;
 	}
 
 	/**
-	 * Retourne l'usager
+	 * Retourne l'identifiant de l'usager
 	 *
-	 * @return usager
+	 * @return id_usager
 	 **/
-	public Usager getUsager() {
-		return usager;
+	public int getId_usager() {
+		return id_usager;
 	}
 
 	/**
-	 * Méthode permettant de modifier l'usager
+	 * Méthode permettant de modifier l'identifiant de l'usager
 	 *
-	 * @param usager
-	 *            contenant le nouveau usager
+	 * @param id_usager
+	 *            contenant le nouvel identifiant de l'usager
 	 **/
-	public void setUsager(Usager usager) {
-		this.usager = usager;
+	public void setId_usager(int id_usager) {
+		this.id_usager = id_usager;
 	}
 
 	// ----------------------------------------//
-	// ------------Methods--------------------//
+	// ------------Methodes--------------------//
 	// ----------------------------------------//
 	/**
 	 * Constructeur d'emprunt qui enregistre le livre emprunté/rendu, l'usager
 	 * qui a emprunté/rendu le livre et la date d'emprunt/retour du livre
 	 *
-	 * @param liv
-	 *            le livre emprunté/rendu
-	 * @param usag
-	 *            l'usagé qui a emprunté/rendu le livre
+	 * @param li
+	 *            l'identifiant du livre emprunté/rendu
+	 * @param us
+	 *            l'identifiant de l'usagé qui a emprunté/rendu le livre
 	 * @param demp
 	 *            la date d'emprunt
 	 * @param drend
@@ -92,10 +92,9 @@ public class Emprunt {
 	 *
 	 **/
 
-	public Emprunt(Livre liv, Usager usag, String demp, String drend) {
-
-		livre = liv;
-		usager = usag;
+	public Emprunt(int li, int us, String demp, String drend) {
+		id_livre = li;
+		id_usager = us;
 		date_emprunt = demp;
 		date_rendu = drend;
 
@@ -109,8 +108,8 @@ public class Emprunt {
 	 */
 
 	public int enregistrerEmprunt() {
-		String sql = "INSERT INTO emprunt (livre, usager, date_emprunt, date_rendu) VALUES ('" + livre + "','" + usager
-				+ "', + date_emprunt, date_rendu)  ";
+		String sql = "INSERT INTO emprunt (Id_Livre, Id_Usager, Date_Emprunt, Date_Rendu) VALUES ('" + getId_livre()
+				+ "', '" + getId_usager() + "', '" + date_emprunt + "','" + date_rendu + "') ";
 
 		PDO.Sql(sql);
 
@@ -121,8 +120,13 @@ public class Emprunt {
 
 	}
 
+	/*
+	 * generer la requete sql qui permet de modifier les donn�es correspondant à
+	 * l'emprunt, la méthode SQL prend en parametre cette requete afin de
+	 * renvoyer le résultat de la requete
+	 */
 	public void modifierEmprunt() {
-		String sql = "INSERT INTO emprunt 'date_rendu' VALUES 'drend' )";
+		String sql = "INSERT INTO Emprunt ('Date_Rendu) VALUES ('" + date_rendu + "' ) WHERE (id_livre= id_usager=)";
 		PDO.Sql(sql);
 
 	}

@@ -29,7 +29,7 @@ public class Usager {
 	}
 
 	// ----------------------------------------//
-	// ------------Methods--------------------//
+	// ------------Methodes--------------------//
 	// ----------------------------------------//
 	/**
 	 * Constructeur de l'usager qui initialise le nom de l'usager
@@ -46,7 +46,7 @@ public class Usager {
 	}
 
 	public int enregistrerUsager() {
-		String sql = "INSERT INTO usager 'nom_usager' VALUES 'nu' )";
+		String sql = "INSERT INTO Usager ('Nom_Usager' ) VALUES ('" + nom_usager + "')";
 		PDO.Sql(sql);
 		return 0;
 	}

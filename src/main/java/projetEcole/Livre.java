@@ -138,7 +138,7 @@ public class Livre {
 	}
 
 	// ----------------------------------------//
-	// ------------Methods--------------------//
+	// ------------Methodes--------------------//
 	// ----------------------------------------//
 
 	/**
@@ -179,7 +179,7 @@ public class Livre {
 				+ "'," + annee + ",'" + nom_auteur + "','" + prenom_auteur + "','" + editeur + "')";
 		PDO.Sql(sql);
 
-		// String sql_recup = "SELECT id_livre FROM livre WHERE..... ";
+		// String sql_recup = "SELECT * FROM livre ";
 		// PDO.Sql(sql_recup);
 
 		return 0;// retourne l'identifiant du livre qui a été genéré
