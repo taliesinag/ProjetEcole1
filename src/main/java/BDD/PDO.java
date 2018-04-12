@@ -57,5 +57,10 @@ public class PDO {
 		pdo = new PDO();
 		System.out.println(pdo.sql("CREATE TABLE IF NOT EXISTS Usager(id INTEGER, nom VARCHAR)"));
 	}
+	
+	public static ResultSet Sql(String sql){
+		System.out.println(sql);
+		return null;
+	}
 
 }
