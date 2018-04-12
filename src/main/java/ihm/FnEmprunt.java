@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -15,9 +17,11 @@ import javax.swing.JTextField;
 
 public class FnEmprunt extends JInternalFrame {
 	private JTextField txtDateEmprunt;
-	private JTextField txtDateRetour;
+	private JTextField txtDateRendu;
 	private JButton btnEmprunt;
 	private JCheckBox chckbxLivre;
+	private JLabel lblDateRendu;
+	private JLabel lblDateEmprunt;
 	private JOptionPane jOptionPane = new JOptionPane();
 
 	/**
@@ -43,6 +47,12 @@ public class FnEmprunt extends JInternalFrame {
 	public FnEmprunt() {
 		setBounds(100, 100, 450, 492);
 		getContentPane().setLayout(null);
+		setBounds(200, 200, 550, 500);
+		getContentPane().setLayout(null);
+		setMaximizable(true);
+		setIconifiable(true);
+		setResizable(true);
+		setClosable(true);
 
 		JLabel lbLivre = new JLabel("Gestion des Emprunts");
 		lbLivre.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -55,18 +65,9 @@ public class FnEmprunt extends JInternalFrame {
 		getContentPane().add(lbcheck);
 
 		chckbxLivre = new JCheckBox("");
-		chckbxLivre.addActionListener(new ActionListener() {
-			// @Override
-			public void actionPerformed(ActionEvent e) {
 
-				if (chckbxLivre.isSelected()) {
-
-					txtDateEmprunt.setEnabled(true);
-
-				}
-			}
-		});
 		chckbxLivre.setBounds(223, 70, 31, 23);
+		ischekLivre();
 		getContentPane().add(chckbxLivre);
 
 		JLabel lblNewLabel = new JLabel("Livres :");
@@ -87,7 +88,7 @@ public class FnEmprunt extends JInternalFrame {
 		lblUsagers.setBounds(28, 172, 56, 14);
 		getContentPane().add(lblUsagers);
 
-		JLabel lblDateEmprunt = new JLabel("Date Emprunt :");
+		lblDateEmprunt = new JLabel("Date Emprunt :");
 		lblDateEmprunt.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblDateEmprunt.setBounds(28, 235, 97, 14);
 		getContentPane().add(lblDateEmprunt);
@@ -97,15 +98,17 @@ public class FnEmprunt extends JInternalFrame {
 		getContentPane().add(txtDateEmprunt);
 		txtDateEmprunt.setColumns(10);
 
-		JLabel lblDateRendu = new JLabel("Date Rendue :");
+		lblDateRendu = new JLabel("Date Rendue :");
 		lblDateRendu.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblDateRendu.setBounds(26, 279, 97, 14);
+		lblDateRendu.setEnabled(false);
 		getContentPane().add(lblDateRendu);
 
-		txtDateRetour = new JTextField();
-		txtDateRetour.setColumns(10);
-		txtDateRetour.setBounds(128, 277, 134, 20);
-		getContentPane().add(txtDateRetour);
+		txtDateRendu = new JTextField();
+		txtDateRendu.setColumns(10);
+		txtDateRendu.setBounds(128, 277, 134, 20);
+		txtDateRendu.setEnabled(false);
+		getContentPane().add(txtDateRendu);
 
 		btnEmprunt = new JButton("Valider Enprunt");
 		validerEmprunt(); // valider
@@ -120,6 +123,24 @@ public class FnEmprunt extends JInternalFrame {
 			// @Override
 			public void actionPerformed(ActionEvent arg0) {
 				jOptionPane.showMessageDialog(null, "Emprunt Valider");
+			}
+		});
+	}
+
+	private void ischekLivre() {
+
+		chckbxLivre.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				// System.out.println("Checked? " + chckbxLivre.isSelected());
+
+				if (chckbxLivre.isSelected()) {
+					lblDateRendu.setEnabled(true);
+					txtDateRendu.setEnabled(true);
+					txtDateEmprunt.setEnabled(false);
+					lblDateEmprunt.setEnabled(false);
+
+					// Ici le code pour afficher la
+				}
 			}
 		});
 	}
