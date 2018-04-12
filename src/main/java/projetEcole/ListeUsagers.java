@@ -15,8 +15,8 @@ public class ListeUsagers {
 	}
 
 	public Usager getUsager() {
-		return null;
 
-	};
+		return null;
+	}
 
 }

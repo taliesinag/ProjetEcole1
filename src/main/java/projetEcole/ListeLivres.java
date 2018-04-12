@@ -22,4 +22,8 @@ public class ListeLivres {
 		return null;
 	}
 
+	/*
+	 * public void ajouteRoman(String auteur,String titre) {
+	 * listeLivres.ajouter(new Roman(auteur,titre)); }
+	 */
 }
